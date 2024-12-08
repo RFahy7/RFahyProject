@@ -5,15 +5,14 @@ from pathlib import Path
 
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
-    page_title='GDP dashboard',
-    page_icon=':earth_americas:', # This is an emoji shortcode. Could be a URL too.
+    page_title='New York Times Headlines & Stock Prices'
 )
 
 # -----------------------------------------------------------------------------
 # Declare some useful functions.
 
 @st.cache_data
-def get_gdp_data():
+def get_data():
     """Grab GDP data from a CSV file.
 
     This uses caching to avoid having to read the file every time. If we were
@@ -53,11 +52,11 @@ def get_gdp_data():
     )
 
     # Convert years from string to integers
-    gdp_df['Year'] = pd.to_numeric(gdp_df['Year'])
+    df['Year'] = pd.to_numeric(gdp_df['Year'])
 
-    return gdp_df
+    return df
 
-gdp_df = get_gdp_data()
+df = get_data()
 
 # -----------------------------------------------------------------------------
 # Draw the actual page
