@@ -13,7 +13,7 @@ download('vader_lexicon')
 download('wordnet')
 
 # Load the model and vectorizer
-linear_regressor = joblib.load('linear_regressor.joblib')
+GradientBoostingRegressor = joblib.load('gmb.joblib')
 vectorizer = joblib.load('vectorizer.joblib')
 
 # Define text preprocessing function
@@ -42,7 +42,7 @@ def main():
         input_vector = vectorizer.transform([processed_input])
 
         # Make prediction using the linear regression model
-        sentiment_prediction = linear_regressor.predict(input_vector)
+        sentiment_prediction = GradientBoostingRegressor.predict(input_vector)
 
         st.write(f"Predicted Sentiment Score: {sentiment_prediction[0]:.2f}")
 
