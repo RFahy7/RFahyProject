@@ -32,9 +32,9 @@ def main():
     st.title("Headline Sentiment Prediction")
 
     st.header("Enter a News Headline")
-    user_input = st.text_input("Headline", "Type your headline here...")
+    user_input = st.text_input("Headline", "Type your headline here then click PREDICT SENTIMENT...")
 
-    if st.button("Predict Sentiment"):
+    if st.button("PREDICT SENTIMENT"):
         # Preprocess the input headline
         processed_input = preprocess_text(user_input)
 
