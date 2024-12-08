@@ -13,7 +13,7 @@ download('vader_lexicon')
 download('wordnet')
 
 # Load the Gradient Boosting model and TF-IDF vectorizer
-linear_regressor = joblib.load('linead_regressor.joblib')
+linear_regressor = joblib.load('linear_regressor.joblib')
 gradient_booster = joblib.load('gmb.joblib')
 vectorizer = joblib.load('vectorizer.joblib')
 
