@@ -13,6 +13,7 @@ download('vader_lexicon')
 download('wordnet')
 
 # Load the Gradient Boosting model and TF-IDF vectorizer
+linear_regressor = joblib.load('linead_regressor.joblib')
 gradient_booster = joblib.load('gmb.joblib')
 vectorizer = joblib.load('vectorizer.joblib')
 
@@ -32,7 +33,7 @@ def main():
     st.title("Headline Sentiment Prediction")
 
     st.header("Enter a News Headline")
-    user_input = st.text_input("Headline", "Type your headline here...")
+    user_input = st.text_input("Headline", "Type your headline here then press Predict Sentiment")
 
     if st.button("Predict Sentiment"):
         # Preprocess the input headline
@@ -41,11 +42,12 @@ def main():
         # Transform the input text to the TF-IDF vector
         input_vector = vectorizer.transform([processed_input])
 
-        # Make prediction using the Gradient Boosting model
-        sentiment_prediction = gradient_booster.predict(input_vector)
-
-        st.write(f"Predicted Sentiment Score: {sentiment_prediction[0]:.2f}")
-
-
+        # Make predictions
+        sentiment_prediction1 = linear_regressor.predict(input_vector)
+        st.write(f"Using Linear Regressor...Predicted Sentiment Score: {sentiment_prediction1[0]:.2f}")
+        sentiment_prediction2 = gradient_booster.predict(input_vector)
+        st.write(f"Using Graident Booster...Predicted Sentiment Score: {sentiment_prediction2[0]:.2f}")
+        
+        
 if __name__ == "__main__":
     main()
